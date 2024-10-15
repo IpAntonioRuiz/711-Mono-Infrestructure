@@ -20,5 +20,3 @@ module "dev_vm" {
   MONGO_INITDB_ROOT_PASSWORD = var.MONGO_INITDB_ROOT_PASSWORD
   DOMAIN = var.DOMAIN
 }
-
- 
