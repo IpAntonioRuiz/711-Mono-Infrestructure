@@ -1,4 +1,4 @@
-name: Deploy Dev Infrastructure
+name: Deply Dev Infrestructure
 on: 
     push:
         branches:
@@ -9,7 +9,8 @@ on:
 
 permissions:
     id-token: write
-    contents: read  # 'pull-request' no es un permiso válido
+    contents: read
+    pull-requests: write
 
 env:
     ARM_CLIENT_ID: "${{secrets.ARM_CLIENT_ID}}"
@@ -28,7 +29,7 @@ env:
     TF_VAR_DOMAIN: "${{secrets.TF_VAR_DOMAIN}}"
 
 jobs:
-    terraform-plan-apply:
+    terrafomr-plan-apply:
         runs-on: ubuntu-latest
         env:
             ARM_SKIP_PROVIDER_REGISTRATION: true
@@ -44,17 +45,18 @@ jobs:
 
             - name: Create SSH Keys from secret
               run: |
-                mkdir -p ./env/dev/keys
-                echo "${{secrets.SSH_PRIVATE_KEY}}" > ./env/dev/keys/711Mono_server
-                echo "${{secrets.SSH_PUBLIC_KEY}}" > ./env/dev/keys/711Mono_server.pub
-                chmod 777 ./env/dev/keys/711Mono_server
-                chmod 777 ./env/dev/keys/711Mono_server.pub
+                    mkdir -p ./env/dev/keys
+                    echo "${{secrets.SSH_PRIVATE_KEY}}" > ./env/dev/keys/711Mono_server
+                    echo "${{secrets.SSH_PUBLIC_KEY}}" > ./env/dev/keys/711Mono_server.pub
+                    chmod 777 ./env/dev/keys/711Mono_server
+                    chmod 777 ./env/dev/keys/711Mono_server.pub
 
             - name: Terraform init
-              run: terraform -chdir=env/dev init
+              run: Terraform -chdir=env/dev init
 
             - name: Terraform fmt
-              run: terraform -chdir=env/dev fmt
+              run: Terraform -chdir=env/dev fmt
 
             - name: Terraform plan
-              run: terraform -chdir=env/dev plan
+              run: Terraform -chdir=env/dev plan
+
