@@ -1,4 +1,4 @@
-name: Deply Dev Infrestructure
+name: Deploy Dev Infrastructure
 on: 
     push:
         branches:
@@ -9,8 +9,7 @@ on:
 
 permissions:
     id-token: write
-    contents: read
-    # pull-request: write
+    contents: read  # 'pull-request' no es un permiso válido
 
 env:
     ARM_CLIENT_ID: "${{secrets.ARM_CLIENT_ID}}"
@@ -29,7 +28,7 @@ env:
     TF_VAR_DOMAIN: "${{secrets.TF_VAR_DOMAIN}}"
 
 jobs:
-    terrafomr-plan-apply:
+    terraform-plan-apply:
         runs-on: ubuntu-latest
         env:
             ARM_SKIP_PROVIDER_REGISTRATION: true
@@ -52,11 +51,10 @@ jobs:
                 chmod 777 ./env/dev/keys/711Mono_server.pub
 
             - name: Terraform init
-              run: Terraform -chdir=env/dev init
+              run: terraform -chdir=env/dev init
 
             - name: Terraform fmt
-              run: Terraform -chdir=env/dev fmt
+              run: terraform -chdir=env/dev fmt
 
             - name: Terraform plan
-              run: Terraform -chdir=env/dev plan
-
+              run: terraform -chdir=env/dev plan
