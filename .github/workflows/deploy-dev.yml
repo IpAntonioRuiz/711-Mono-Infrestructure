@@ -44,11 +44,12 @@ jobs:
                 terraform_wrapper: false
 
             - name: Create SSH Keys from secret
-              run: mkdir -p ./env/dev/keys
-                    echo "${{secrets.SSH_PRIVATE_KEY}}" > ./env/dev/keys/711Mono_server
-                    echo "${{secrets.SSH_PUBLIC_KEY}}" > ./env/dev/keys/711Mono_server.pub
-                    chmod 777 ./env/dev/keys/711Mono_server
-                    chmod 777 ./env/dev/keys/711Mono_server.pub
+              run: |
+                mkdir -p ./env/dev/keys
+                echo "${{secrets.SSH_PRIVATE_KEY}}" > ./env/dev/keys/711Mono_server
+                echo "${{secrets.SSH_PUBLIC_KEY}}" > ./env/dev/keys/711Mono_server.pub
+                chmod 777 ./env/dev/keys/711Mono_server
+                chmod 777 ./env/dev/keys/711Mono_server.pub
 
             - name: Terraform init
               run: Terraform -chdir=env/dev init
