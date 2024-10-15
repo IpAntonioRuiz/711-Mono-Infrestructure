@@ -52,11 +52,11 @@ jobs:
                     chmod 777 ./env/dev/keys/711Mono_server.pub
 
             - name: Terraform init
-              run: Terraform -chdir=env/dev init
+              run: terraform -chdir=env/dev init
 
             - name: Terraform fmt
-              run: Terraform -chdir=env/dev fmt
+              run: terraform -chdir=env/dev fmt
 
             - name: Terraform plan
-              run: Terraform -chdir=env/dev plan
+              run: terraform -chdir=env/dev plan
 
