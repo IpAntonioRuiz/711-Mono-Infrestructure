@@ -56,6 +56,6 @@ jobs:
             - name: Terraform fmt
               run: Terraform -chdir=env/dev fmt
 
-            - name: Terraform plant
+            - name: Terraform plan
               run: Terraform -chdir=env/dev plan
 
