@@ -23,13 +23,14 @@ env:
     TF_VAR_MAILER_ACCESS_TOKEN: "${{secrets.MAILER_ACCESS_TOKEN}}"
     TF_VAR_MAPBOX_ACCESS_TOKEN: "${{secrets.MAPBOX_ACCESS_TOKEN}}"
     TF_VAR_MAILER_SERVICE: "${{secrets.MAILER_SERVICE}}"
+    TF_VAR_MAILER_USER: "${{secrets.MAILER_USER}}"
     TF_VAR_MAILER_EMAIL: "${{secrets.MAILER_EMAIL}}"
     TF_VAR_MONGO_INITDB_ROOT_PASSWORD: "${{secrets.MONGO_INITDB_ROOT_PASSWORD}}"
     TF_VAR_MONGO_INITDB_ROOT_USERNAME: "${{secrets.MONGO_INITDB_ROOT_USERNAME}}"
     TF_VAR_DOMAIN: "${{secrets.DOMAIN}}"
 
 jobs:
-    terraform-plan-apply:
+    terrafomr-plan-apply:
         runs-on: ubuntu-latest
         env:
             ARM_SKIP_PROVIDER_REGISTRATION: true
@@ -59,8 +60,7 @@ jobs:
 
             - name: Terraform plan
               run: terraform -chdir=env/dev plan
-
+              
             - name: Terraform Apply
               run: terraform -chdir=env/dev apply --auto-approve
-
 
