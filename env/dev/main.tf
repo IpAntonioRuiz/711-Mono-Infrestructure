@@ -21,8 +21,3 @@ module "dev_vm" {
   DOMAIN = var.DOMAIN
 }
 
-
-
-
-
-

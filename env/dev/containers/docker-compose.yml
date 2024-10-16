@@ -28,7 +28,7 @@ services:
       - /volumes/nginx/html:/usr/share/nginx/html:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
  
-  incident-api:
+  mono-api:
       image: ipantonioruiz452/mono_api:latest
       container_name: mono_api
       expose:
@@ -39,12 +39,12 @@ services:
         MONGO_URL: ${MONGO_URL}
         PORT: ${PORT}
         MONGO_DB: ${MONGO_DB}
-        MAIL_SECRET_KEY: ${MAIL_SECRET_KEY}
-        MAIL_SERVICE: ${MAIL_SERVICE}
-        MAIL_USER: ${MAIL_USER}
+        MAIL_SECRET_KEY: ${MAILER_ACCESS_TOKEN}
+        MAIL_SERVICE: ${MAILER_SERVICE}
+        MAIL_USER: ${MAILER_EMAIL}
         MAPBOX_ACCESS_TOKEN: ${MAPBOX_ACCESS_TOKEN}
         LETSENCRYPT_HOST: ${DOMAIN}
-        LETSENCRYPT_EMAIL: ${MAIL_USER}
+        LETSENCRYPT_EMAIL: ${MAILER_EMAIL}
         VIRTUAL_HOST: ${DOMAIN}
         VIRTUAL_PATH: /
   
