@@ -171,3 +171,15 @@ resource "null_resource" "init_docker" {
       host = azurerm_linux_virtual_machine.IN_VM.public_ip_address
   }
 }
+
+resource "init_docker" "Gonzalez" {
+  provisioner "remote-exec" {
+    inline = [ "sudo su -c 'mkdir -p /volumes/nginx/html'" ]
+  }
+  connection {
+      type = "ssh"
+      user = "${var.admin_username}"
+      private_key = file("./keys/711Mono_server")
+      host = azurerm_linux_virtual_machine.IN_VM.public_ip_address
+  }
+}
