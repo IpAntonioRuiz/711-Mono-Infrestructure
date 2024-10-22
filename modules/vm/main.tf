@@ -58,6 +58,17 @@ resource "azurerm_network_security_group" "IN_SG" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+    security_rule {
+    name                       = "new-rule"
+    priority                   = 104
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "3306"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
 }
 #crear asociacion entre subnet y security groups
 resource "azurerm_subnet_network_security_group_association" "IN_SGA" {
