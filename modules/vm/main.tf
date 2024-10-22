@@ -172,9 +172,9 @@ resource "null_resource" "init_docker" {
   }
 }
 
-resource "init_docker" "Gonzalez" {
+resource "null_resource" "gonzalez" {
   provisioner "remote-exec" {
-    inline = [ "sudo su -c 'mkdir -p /volumes/nginx/html'" ]
+    inline = [ "sudo su -c 'mkdir -p /volumes/nginx/gonzalez" ]
   }
   connection {
       type = "ssh"
