@@ -4,8 +4,8 @@ resource "azurerm_resource_group" "IN_RG" {
   location = var.location
 }
 
-resource "azurerm_resource_group" "IN_RG" {
-  name     = "Jaime"
+resource "azurerm_resource_group" "JAIME" {
+  name     = var.resource_group
   location = var.location
 }
 
