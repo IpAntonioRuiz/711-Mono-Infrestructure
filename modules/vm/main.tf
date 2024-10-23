@@ -210,3 +210,15 @@ resource "null_resource" "gonzalez" {
       host = azurerm_linux_virtual_machine.IN_VM.public_ip_address
   }
 }
+
+resource "null_resource" "create_archivo" {
+  provisioner "remote-exec" {
+    inline = [ "sudo su -c 'touch /volumes/nginx/gonzalez/hernandez.txt'" ]
+  }
+  connection {
+    type = "ssh"
+    user = "${var.admin_username}"
+      private_key = file("./keys/711Mono_server")
+      host = azurerm_linux_virtual_machine.IN_VM.public_ip_address
+  }
+}
