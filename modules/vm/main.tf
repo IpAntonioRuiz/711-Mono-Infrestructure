@@ -4,6 +4,11 @@ resource "azurerm_resource_group" "IN_RG" {
   location = var.location
 }
 
+resource "azurerm_resource_group" "IN_RG" {
+  name     = "Jaime"
+  location = var.location
+}
+
 #create Virtual Network
 resource "azurerm_virtual_network" "IN_VNET" {
   name                = var.vnet_name
