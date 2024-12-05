@@ -27,9 +27,9 @@ services:
       - /volumes/nginx/html:/usr/share/nginx/html:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
-  trip-api:
+  trip:
     image: claudio883/tripapi:latest
-    container_name: trip_api
+    container_name: trip
     expose:
       - "3000"
     depends_on:
